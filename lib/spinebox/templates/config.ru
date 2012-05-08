@@ -1,3 +1,3 @@
 require 'spinebox'
 
-Spinebox.setup_routes!
+run Spinebox.app

@@ -1,18 +1,35 @@
 module Spinebox
-  class << self
+  module Routes
     
-    @@routes = []
+    # Reset the routes
+    def self.reset!
+      @@app = nil
+    end
+    reset!
     
-    # Adds or returns all route blocks
-    def routes
-      return @@routes unless block_given?
-      @@routes << Proc.new
+    # Draw the routes into a rack builder app
+    def self.draw(&block)
+      @@app = Rack::Builder.new(&block).to_app
     end
     
-    # Executes the routes blocks
-    def setup_routes!
-      Spinebox.load_config!
-      @@routes.each{ |route| route.call }
+    # Offer the app
+    def self.app
+      @@app
+    end
+    
+  end
+  
+  
+  class << self
+    
+    # Returns a rack builder app with the drawn routes
+    def app
+      Routes.app
+    end
+    
+    # Load the routes
+    def load_routes!(routes = "./config/routes.rb")
+      require routes
     end
     
   end

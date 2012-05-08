@@ -5,9 +5,10 @@ describe Spinebox::Generator do
   context "new app" do
     
     before(:each) do
-      FileUtils.rm_rf("spec/tmp")
-      FileUtils.mkdir("spec/tmp")
-      Dir.chdir "spec/tmp"
+      Dir.chdir(File.dirname(__FILE__))
+      FileUtils.rm_rf("tmp")
+      FileUtils.mkdir("tmp")
+      Dir.chdir "tmp"
     end
     
     after(:each) do

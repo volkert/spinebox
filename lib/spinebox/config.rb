@@ -13,5 +13,10 @@ module Spinebox
       config.assets
     end
     
+    # Load the config
+    def load_config!(config = "./config/config.rb")
+      require config
+    end
+    
   end
 end

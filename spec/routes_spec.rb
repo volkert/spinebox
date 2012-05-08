@@ -2,18 +2,16 @@ require_relative "./helpers"
 
 describe Spinebox do
   
-  before(:all) do
-    Spinebox.routes{ "Map A" }
-    Spinebox.routes{ "Map B" }
+  before(:each) do
+    Spinebox::Routes.reset!
   end
   
-  it "should offer a routes method" do
-    Spinebox.routes.should have(2).routes
-  end
-  
-  it "should setup all routes" do
+  it "should load the routes from the default path" do
     Dir.chdir "#{Spinebox.root}/templates"
-    lambda{ Spinebox.setup_routes! }.should_not raise_error
+    
+    Spinebox.app.should be_nil
+    Spinebox.load_routes!
+    Spinebox.app.should_not be_nil
   end
   
 end

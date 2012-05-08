@@ -1,4 +1,4 @@
-Spinebox.routes do |routes|
+Spinebox::Routes.draw do
   
   # Assets
   map '/assets' do

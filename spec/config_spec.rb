@@ -18,4 +18,12 @@ describe Spinebox do
     Spinebox.assets.should be_a Sprockets::Environment
   end
   
+  it "should load the config from the default path" do
+    Dir.chdir "#{Spinebox.root}/templates"
+    
+    Spinebox.config.assets.paths.should have(0).paths
+    Spinebox.load_config!
+    Spinebox.config.assets.paths.should have_at_least(2).paths
+  end
+  
 end

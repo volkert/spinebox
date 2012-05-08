@@ -1,4 +1,5 @@
 require "sprockets"
+require "rack"
 require 'coffee_script'
 require 'eco'
 require 'sass'
