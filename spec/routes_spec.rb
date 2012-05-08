@@ -8,10 +8,7 @@ describe Spinebox do
   
   it "should load the routes from the default path" do
     Dir.chdir "#{Spinebox.root}/templates"
-    
-    Spinebox.app.should be_nil
-    Spinebox.load_routes!
-    Spinebox.app.should_not be_nil
+    Spinebox.app.should be_a Rack::URLMap
   end
   
 end

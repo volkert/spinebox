@@ -13,7 +13,7 @@ describe Spinebox::Generator do
     
     after(:each) do
       Dir.chdir ".."
-      FileUtils.rm_rf("tmp")
+      #FileUtils.rm_rf("tmp")
     end
     
     it "should generate a folder and copy the template contents" do
