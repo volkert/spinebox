@@ -49,4 +49,25 @@ describe Spinebox::Generator do
     
   end
   
+  context "controller" do
+    
+    before(:each) do
+      Dir.chdir "#{Spinebox.root}/templates/app"
+      Spinebox.boot!
+    end
+    
+    it "should be generated" do
+      File.exists?("app/assets/javascripts/app/controllers/posts.js.coffee").should_not be_true
+      
+      generator = Spinebox::Generator::Controller.new "posts"
+      generator.source_name.should == "posts"
+      generator.name.should == "Posts"
+      generator.source.include?("App.Posts").should be_true
+      
+      File.exists?("app/assets/javascripts/app/controllers/posts.js.coffee").should be_true
+      FileUtils.rm("app/assets/javascripts/app/controllers/posts.js.coffee")
+    end
+    
+  end
+  
 end

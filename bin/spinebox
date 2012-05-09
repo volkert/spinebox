@@ -38,17 +38,22 @@ Spinebox::Command.dispatch do
   end
   
   
-  # Generators
-  on "generate model MODEL [attributes], g model MODEL [attributes]", "Generate a model with attributes", :if => proc {
-    ['generate', 'g'].include?(ARGV.first)
-    and
-    ['model', 'm'].include?(ARGV[1])
-  }, :type => :generator do
+  # Model Generator
+  on "generate model MODEL [attributes]", "Generate a model with attributes", :if => proc { ['generate', 'g'].include?(ARGV.first) and ['model', 'm'].include?(ARGV[1])}, :type => :generator do
     ARGV.shift
     ARGV.shift
     name = ARGV.shift
     model = Spinebox::Generator::Model.new(name, ARGV)
     puts "Successfully created model '#{model.name}'".green
+    exit(0)
+  end
+  
+  # Controller Generator
+  on "generate controller CONTROLLER", "Generate a controller", :if => proc { ['generate', 'g'].include?(ARGV.first) and ['controller', 'c'].include?(ARGV[1])}, :type => :generator do
+    ARGV.shift
+    ARGV.shift
+    controller = Spinebox::Generator::Controller.new(ARGV.first)
+    puts "Successfully created controller '#{controller.name}'".green
     exit(0)
   end
   

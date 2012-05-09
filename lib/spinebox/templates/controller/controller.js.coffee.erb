@@ -1,0 +1,7 @@
+class App.<%= @name %> extends Spine.Controller
+  constructor: ->
+    super
+    @render()
+  
+  render: ->
+    @html JST['app/views/<%= @view_name %>'](@)

@@ -32,7 +32,6 @@ module Spinebox
       attr_reader :source
       attr_reader :source_name
 
-      # Creates a new app and copies the templates to the newly created directory
       def initialize name, attributes = []
         @name, @source_name, @attributes = name.camelize, name, attributes
         compile_template
@@ -46,6 +45,31 @@ module Spinebox
 
       def write_source
         File.open("app/assets/javascripts/app/models/#{@source_name}.js.coffee", "w"){ |file| file.write(@source) }
+      end
+
+    end
+    
+    # Generates a controller
+    class Controller
+      
+      attr_reader :name
+      attr_reader :source
+      attr_reader :source_name
+      
+      
+      def initialize name
+        @name, @source_name, @view_name = name.pluralize.camelize, name.pluralize, name.singularize
+        compile_template
+        write_source
+      end
+
+      private
+      def compile_template
+        @source = ERB.new(File.open("#{Spinebox.root}/templates/controller/controller.js.coffee.erb").read).result(binding)
+      end
+
+      def write_source
+        File.open("app/assets/javascripts/app/controllers/#{@source_name}.js.coffee", "w"){ |file| file.write(@source) }
       end
 
     end
