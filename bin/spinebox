@@ -20,7 +20,13 @@ Spinebox::Command.dispatch do
   on "new APP", "Create a new APP", :if => proc { ['new', 'n'].include?(ARGV.first) } do
     ARGV.shift
     Spinebox::Generator.new(ARGV.first)
-    puts ">> Created new spinebox in './#{ARGV.first}'. Let's go!"
+    exit(0)
+  end
+  
+  # Compile
+  on "compile, precompile", "Compile files to the public dir", :if => proc { ['compile', 'precompile'].include?(ARGV.first) } do
+    Spinebox.boot!
+    Spinebox::Compiler.compile
     exit(0)
   end
   
