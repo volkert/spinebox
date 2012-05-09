@@ -13,9 +13,9 @@ bc.. $ gem install spinebox
 
 h3. Usage
 
-* Create a new project with @spinebox new projectname@
-* Change into the project and start the development server with @spinebox server@
-* Enjoy!
+bc.. $ spinebox new blog
+$ cd blog
+$ spinebox server
 
 h3. Contributing
 
