@@ -70,4 +70,24 @@ describe Spinebox::Generator do
     
   end
   
+  context "view" do
+    
+    before(:each) do
+      Dir.chdir "#{Spinebox.root}/templates/app"
+      Spinebox.boot!
+    end
+    
+    it "should be generated" do
+      File.exists?("app/assets/javascripts/app/views/post.jst.eco").should_not be_true
+      
+      generator = Spinebox::Generator::View.new "post"
+      generator.source_name.should == "post"
+      generator.name.should == "Post"
+      
+      File.exists?("app/assets/javascripts/app/views/post.jst.eco").should be_true
+      FileUtils.rm("app/assets/javascripts/app/views/post.jst.eco")
+    end
+    
+  end
+  
 end

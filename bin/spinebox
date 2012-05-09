@@ -57,4 +57,13 @@ Spinebox::Command.dispatch do
     exit(0)
   end
   
+  # View Generator
+  on "generate view VIEW", "Generate a view", :if => proc { ['generate', 'g'].include?(ARGV.first) and ['view', 'v'].include?(ARGV[1])}, :type => :generator do
+    ARGV.shift
+    ARGV.shift
+    view = Spinebox::Generator::View.new(ARGV.first)
+    puts "Successfully created view '#{view.name}'".green
+    exit(0)
+  end
+  
 end

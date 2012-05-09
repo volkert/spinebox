@@ -75,6 +75,31 @@ module Spinebox
     end
     
     
+    # Generates a view
+    class View
+      
+      attr_reader :name
+      attr_reader :source
+      attr_reader :source_name
+      
+      
+      def initialize name
+        @name, @source_name = name.camelize, name
+        write_source
+      end
+
+      private
+      def compile_template
+        @source = ""
+      end
+
+      def write_source
+        File.open("app/assets/javascripts/app/views/#{@source_name}.jst.eco", "w"){ |file| file.write(@source) }
+      end
+
+    end
+    
+    
 
   end
 end
