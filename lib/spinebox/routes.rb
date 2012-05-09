@@ -12,7 +12,7 @@ module Spinebox
       @@app = Rack::Builder.new(&block).to_app
     end
     
-    # Offer the app
+    # The rack app
     def self.app
       @@app
     end

@@ -7,7 +7,7 @@ require "ostruct"
 
 require "spinebox/version"
 require "spinebox/base"
-require "spinebox/cli"
+require "spinebox/command"
 require "spinebox/config"
 require "spinebox/routes"
 require "spinebox/generator"

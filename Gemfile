@@ -5,3 +5,7 @@ gemspec
 
 gem 'sprockets'
 gem 'rack'
+gem 'thin'
+gem 'coffee_script'
+gem 'eco'
+gem 'sass'

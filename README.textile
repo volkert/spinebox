@@ -1,26 +1,23 @@
-# Spinebox
+h2. Spinebox
 
-TODO: Write a gem description
+A ready to use spine.js rack skeleton builder with development server, routes, config and precompile support.
 
-## Installation
+* Ideal for single or few page applications
+* Fully setup, ready to go spine.js environment
+* Develop in coffee-script and sass with fantastic sprockets asset serving
+* Compile assets and serve the whole app completely static
 
-Add this line to your application's Gemfile:
+h3. Installation
 
-    gem 'spinebox'
+bc.. $ gem install spinebox
 
-And then execute:
+h3. Usage
 
-    $ bundle
+* Create a new project with @spinebox new projectname@
+* Change into the project and start the development server with @spinebox server@
+* Enjoy!
 
-Or install it yourself as:
-
-    $ gem install spinebox
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
+h3. Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
