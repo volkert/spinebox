@@ -5,9 +5,9 @@ Spinebox::Routes.draw do
     run Spinebox.assets
   end
   
-  # Root
+  # Views
   map '/' do
-    run Rack::File.new "public/index.html"
+    run Spinebox.views
   end
   
 end

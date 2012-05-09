@@ -10,6 +10,7 @@ require "spinebox/base"
 require "spinebox/command"
 require "spinebox/config"
 require "spinebox/routes"
+require "spinebox/erb_context"
 require "spinebox/generator"
 
 module Spinebox
