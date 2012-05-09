@@ -5,33 +5,35 @@ require 'spinebox'
 Spinebox::Command.dispatch do
   
   # Version
-  on "--version, -v", "Show the version", :if => proc { ['--version', '-v'].include?(ARGV.first) } do
+  on "--version, -v", "Show the version", :if => proc { ['--version', '-v'].include?(ARGV.first) }, :type => :option do
     puts "Spinebox #{Spinebox::VERSION}"
     exit(0)
   end
   
   # Help
-  on "--help, -h", "Show this help", :if => proc { ['--help', '-h'].include?(ARGV.first) or ARGV.empty? } do
-    puts Spinebox::Command.help
+  on "--help, -h", "Show this help", :if => proc { ['--help', '-h'].include?(ARGV.first) or ARGV.empty? }, :type => :option do
+    Spinebox::Command.help
     exit(0)
   end
   
   # New application
-  on "new APP", "Create a new APP", :if => proc { ['new', 'n'].include?(ARGV.first) } do
+  on "new APP", "Create a new APP", :if => proc { ['new', 'n'].include?(ARGV.first) }, :type => :action do
     ARGV.shift
     Spinebox::Generator.new(ARGV.first)
+    puts "Successfully created '#{ARGV.first}'".green
     exit(0)
   end
   
   # Compile
-  on "compile, precompile", "Compile files to the public dir", :if => proc { ['compile', 'precompile'].include?(ARGV.first) } do
+  on "compile, precompile", "Compile files to the public dir", :if => proc { ['compile', 'precompile'].include?(ARGV.first) }, :type => :action do
     Spinebox.boot!
     Spinebox::Compiler.compile
+    puts "Successfully compiled to 'public'".green
     exit(0)
   end
   
   # Run server
-  on "s, server", "Run the development server", :if => proc { ['server', 's'].include?(ARGV.first) } do
+  on "server, s", "Run the development server", :if => proc { ['server', 's'].include?(ARGV.first) }, :type => :action do
     Rack::Handler::Thin.run(Spinebox.app, :Port => 3000)
   end
   

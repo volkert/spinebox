@@ -27,9 +27,16 @@ module Spinebox
     
     # Combines the information of all registered commands and concatenates them to a string
     def self.help
-      output = "Usage: spinebox [options]\n\n"
-      @@commands.each { |command| output += "\t#{command.command}\t\t#{command.desc}\n" }
-      output
+      puts "Usage:"
+      printf "%-3s %s\n\n", "", "spinebox new APP_PATH"
+      
+      puts "Options:"
+      @@commands.each { |command| printf "%-3s %-20s %s\n", "", command.command, command.desc if command.options[:type] == :option }
+      
+      puts ""
+      
+      puts "Actions:"
+      @@commands.each { |command| printf "%-3s %-20s %s\n", "", command.command, command.desc if command.options[:type] == :action }
     end
     
     # Encapsules a registered command
@@ -37,6 +44,7 @@ module Spinebox
       
       attr_reader :command
       attr_reader :desc
+      attr_reader :options
       
       def initialize command, desc, options, &block
         @command, @desc, @options, @block = command, desc, options, block

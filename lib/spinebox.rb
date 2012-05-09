@@ -3,6 +3,7 @@ require "rack"
 require 'coffee_script'
 require 'eco'
 require 'sass'
+require "colorize"
 require "ostruct"
 
 require "spinebox/version"
