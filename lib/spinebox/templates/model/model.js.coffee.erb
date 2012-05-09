@@ -1,0 +1,3 @@
+class App.<%= @name %> extends Spine.Model
+  @configure '<%= @name %>', <%= @attributes.map{ |attribute| "'#{attribute}'" }.join(", ") %>
+  @extend Spine.Model.Ajax

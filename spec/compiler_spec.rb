@@ -3,7 +3,7 @@ require_relative "./helpers"
 describe Spinebox::Compiler do
   
   before(:each) do
-    Dir.chdir "#{Spinebox.root}/templates"
+    Dir.chdir "#{Spinebox.root}/templates/app"
     Spinebox.boot!
     File.new("app/assets/images/test.png", "w")
   end

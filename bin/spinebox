@@ -19,7 +19,7 @@ Spinebox::Command.dispatch do
   # New application
   on "new APP", "Create a new APP", :if => proc { ['new', 'n'].include?(ARGV.first) }, :type => :action do
     ARGV.shift
-    Spinebox::Generator.new(ARGV.first)
+    Spinebox::Generator::Application.new(ARGV.first)
     puts "Successfully created '#{ARGV.first}'".green
     exit(0)
   end
@@ -35,6 +35,21 @@ Spinebox::Command.dispatch do
   # Run server
   on "server, s", "Run the development server", :if => proc { ['server', 's'].include?(ARGV.first) }, :type => :action do
     Rack::Handler::Thin.run(Spinebox.app, :Port => 3000)
+  end
+  
+  
+  # Generators
+  on "generate model MODEL [attributes], g model MODEL [attributes]", "Generate a model with attributes", :if => proc {
+    ['generate', 'g'].include?(ARGV.first)
+    and
+    ['model', 'm'].include?(ARGV[1])
+  }, :type => :generator do
+    ARGV.shift
+    ARGV.shift
+    name = ARGV.shift
+    model = Spinebox::Generator::Model.new(name, ARGV)
+    puts "Successfully created model '#{model.name}'".green
+    exit(0)
   end
   
 end

@@ -3,7 +3,7 @@ require_relative "./helpers"
 describe Spinebox do
   
   before(:each) do
-    Dir.chdir "#{Spinebox.root}/templates"
+    Dir.chdir "#{Spinebox.root}/templates/app"
     Spinebox::Routes.reset!
   end
   
