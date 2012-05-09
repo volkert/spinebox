@@ -2,4 +2,12 @@
 
 require 'spinebox'
 
-Spinebox::Cli.new.dispatch
+Spinebox::Command.dispatch do
+  
+  # desc, #options, #on, #code
+  on "--version, -v", "Show the version", :if => proc { ['--version', '-v'].include?(ARGV.first) } do
+    puts "Spinebox #{Spinebox::VERSION}"
+    exit(0)
+  end
+  
+end

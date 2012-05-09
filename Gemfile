@@ -5,4 +5,3 @@ gemspec
 
 gem 'sprockets'
 gem 'rack'
-gem 'optitron'

@@ -1,6 +1,5 @@
 require "sprockets"
 require "rack"
-require "optitron"
 require 'coffee_script'
 require 'eco'
 require 'sass'
