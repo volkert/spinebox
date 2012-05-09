@@ -30,13 +30,13 @@ module Spinebox
     
     # Build a javascript tag with body options
     def javascript_tag_for asset, options = {}
-      "<script src='/assets/#{asset.logical_path}#{"?body=1" if options[:body]}' type='text/javascript'></script>"
+      "<script src='assets/#{asset.logical_path}#{"?body=1" if options[:body]}' type='text/javascript'></script>"
     end
     
     # Build a stylesheet link with body options
     def stylesheet_tag_for asset, new_options = {}
       options = { :media => "all", :rel => "stylesheet" }.merge!(new_options)
-      "<link href='/assets/#{asset.logical_path}#{"?body=1" if options[:body]}' media='#{options[:media]}' rel='#{options[:rel]}' type='text/css'>"
+      "<link href='assets/#{asset.logical_path}#{"?body=1" if options[:body]}' media='#{options[:media]}' rel='#{options[:rel]}' type='text/css'>"
     end
     
   end

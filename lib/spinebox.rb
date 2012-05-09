@@ -12,6 +12,7 @@ require "spinebox/config"
 require "spinebox/routes"
 require "spinebox/erb_context"
 require "spinebox/generator"
+require "spinebox/compiler"
 
 module Spinebox
   class << self
