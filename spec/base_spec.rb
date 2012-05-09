@@ -7,7 +7,7 @@ describe Spinebox::Base do
   end
   
   it "should boot" do
-    Dir.chdir "#{Spinebox.root}/templates"
+    Dir.chdir "#{Spinebox.root}/templates/app"
     lambda{ Spinebox.boot! }.should_not raise_exception
   end
   

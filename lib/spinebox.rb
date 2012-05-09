@@ -5,6 +5,8 @@ require 'eco'
 require 'sass'
 require "colorize"
 require "ostruct"
+require 'active_support/all'
+require 'erb'
 
 require "spinebox/version"
 require "spinebox/base"

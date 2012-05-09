@@ -3,7 +3,7 @@ require_relative "./helpers"
 describe Spinebox::ERBContext do
   
   before(:all) do
-    Dir.chdir "#{Spinebox.root}/templates"
+    Dir.chdir "#{Spinebox.root}/templates/app"
     Spinebox.boot!
   end
   

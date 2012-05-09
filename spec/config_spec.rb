@@ -4,7 +4,7 @@ describe Spinebox do
   
   before(:each) do
     Spinebox::Config.reset!
-    Dir.chdir "#{Spinebox.root}/templates"
+    Dir.chdir "#{Spinebox.root}/templates/app"
   end
   
   it "should offer a block style config method" do

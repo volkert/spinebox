@@ -5,6 +5,7 @@ A ready to use spine.js rack skeleton builder with development server, routes, c
 * Ideal for single or few page applications
 * Fully setup, ready to go spine.js environment
 * Develop in coffee-script and sass with fantastic sprockets asset serving
+* Use generators and scaffolding just like with rails
 * Compile assets and serve the whole app completely static
 
 h3. Installation
@@ -13,10 +14,26 @@ bc.. $ gem install spinebox
 
 h3. Usage
 
+h4. Create new project
+
 bc.. # Create new project an start developing
 $ spinebox new blog
 $ cd blog
 $ spinebox server
+
+h4. Generate models, views and controllers
+
+bc.. # Generate a model view and a controller
+$ spinebox generate model post title author body
+$ spinebox generate controller posts
+$ spinebox generate view post
+
+h4. Scaffold
+
+bc.. # Or scaffold all three of them
+$ spinebox scaffold post title author body
+
+h4. Compile project
 
 bc.. # Compile project for static serving
 $ spinebox compile

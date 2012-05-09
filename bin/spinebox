@@ -19,7 +19,7 @@ Spinebox::Command.dispatch do
   # New application
   on "new APP", "Create a new APP", :if => proc { ['new', 'n'].include?(ARGV.first) }, :type => :action do
     ARGV.shift
-    Spinebox::Generator.new(ARGV.first)
+    Spinebox::Generator::Application.new(ARGV.first)
     puts "Successfully created '#{ARGV.first}'".green
     exit(0)
   end
@@ -35,6 +35,46 @@ Spinebox::Command.dispatch do
   # Run server
   on "server, s", "Run the development server", :if => proc { ['server', 's'].include?(ARGV.first) }, :type => :action do
     Rack::Handler::Thin.run(Spinebox.app, :Port => 3000)
+  end
+  
+  
+  # Model Generator
+  on "generate model MODEL [attributes]", "Generate a model with attributes", :if => proc { ['generate', 'g'].include?(ARGV.first) and ['model', 'm'].include?(ARGV[1])}, :type => :generator do
+    ARGV.shift
+    ARGV.shift
+    name = ARGV.shift
+    model = Spinebox::Generator::Model.new(name, ARGV)
+    puts "Successfully created model '#{model.name}'".green
+    exit(0)
+  end
+  
+  # Controller Generator
+  on "generate controller CONTROLLER", "Generate a controller", :if => proc { ['generate', 'g'].include?(ARGV.first) and ['controller', 'c'].include?(ARGV[1])}, :type => :generator do
+    ARGV.shift
+    ARGV.shift
+    controller = Spinebox::Generator::Controller.new(ARGV.first)
+    puts "Successfully created controller '#{controller.name}'".green
+    exit(0)
+  end
+  
+  # View Generator
+  on "generate view VIEW", "Generate a view", :if => proc { ['generate', 'g'].include?(ARGV.first) and ['view', 'v'].include?(ARGV[1])}, :type => :generator do
+    ARGV.shift
+    ARGV.shift
+    view = Spinebox::Generator::View.new(ARGV.first)
+    puts "Successfully created view '#{view.name}'".green
+    exit(0)
+  end
+  
+  # View Generator
+  on "scaffold MODEL [attributes]", "Scaffold a model, view and a controller", :if => proc { ['scaffold', 's'].include?(ARGV.first)}, :type => :scaffold do
+    ARGV.shift
+    name        = ARGV.shift
+    model       = Spinebox::Generator::Model.new(name, ARGV)
+    view        = Spinebox::Generator::View.new(name)
+    controller  = Spinebox::Generator::Controller.new(name)
+    puts "Successfully scaffolded model, view and controller '#{model.name}'".green
+    exit(0)
   end
   
 end
