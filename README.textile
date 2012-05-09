@@ -13,9 +13,13 @@ bc.. $ gem install spinebox
 
 h3. Usage
 
-bc.. $ spinebox new blog
+bc.. # Create new project an start developing
+$ spinebox new blog
 $ cd blog
 $ spinebox server
+
+bc.. # Compile project for static serving
+$ spinebox compile
 
 h3. Contributing
 
