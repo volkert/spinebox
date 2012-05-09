@@ -1,6 +1,6 @@
-#= require_self  
-#= require_tree ./models
-#= require_tree ./controllers
-#= require_tree ./views
-
-window.App = ->
+class App.Index extends Spine.Controller
+  constructor: ->
+    super
+    
+    @append new App.Routes
+    Spine.Route.setup()
