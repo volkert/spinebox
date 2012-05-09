@@ -8,4 +8,7 @@ Spinebox.config do |config|
   # Setup views paths
   config.views.append_path 'app/views'
   
+  # Concatenate assets or serve them seperately?
+  config.concatenate = false
+  
 end

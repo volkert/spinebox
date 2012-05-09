@@ -1,15 +1,31 @@
 module Spinebox
-  class << self
+  module Config
     
-    # Offers the configuration with the assets
-    def config
+    # Reset the config
+    def self.reset!
+      @@configuration = nil
+    end
+    reset!
+    
+    # Offer the configuration
+    def self.configuration(&block)
       @@configuration ||= OpenStruct.new(
         :assets => Sprockets::Environment.new,
         :views  => Sprockets::Environment.new
       )
       
-      yield(@@configuration) if block_given?
+      block.call(@@configuration) if block
       @@configuration
+    end
+    
+  end
+  
+  class << self
+    
+    # Offers the configuration with the assets
+    def config
+      block = Proc.new if block_given?
+      Config.configuration(&block)
     end
     
     # Straight access to the assets
@@ -24,7 +40,7 @@ module Spinebox
     
     # Load the config
     def load_config!(config = "./config/config.rb")
-      require config
+      load config
     end
     
   end

@@ -6,4 +6,9 @@ describe Spinebox::Base do
     File.exists?("#{Spinebox.root}/version.rb").should be_true
   end
   
+  it "should boot" do
+    Dir.chdir "#{Spinebox.root}/templates"
+    lambda{ Spinebox.boot! }.should_not raise_exception
+  end
+  
 end

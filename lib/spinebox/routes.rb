@@ -25,16 +25,14 @@ module Spinebox
     # Returns a rack builder app with the drawn routes
     def app
       Routes.app || begin
-        Routes.reset!
-        Spinebox.load_config!
-        Spinebox.load_routes!
+        Spinebox.boot!
         Routes.app
       end
     end
     
     # Load the routes
     def load_routes!(routes = "./config/routes.rb")
-      require routes
+      load routes
     end
     
   end
