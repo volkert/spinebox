@@ -13,10 +13,26 @@ bc.. $ gem install spinebox
 
 h3. Usage
 
+h4. Create new project
+
 bc.. # Create new project an start developing
 $ spinebox new blog
 $ cd blog
 $ spinebox server
+
+h4. Generate models, view and controllers
+
+bc.. # Generate a model view and a controller
+$ spinebox generate model post title author body
+$ spinebox generate controller posts
+$ spinebox generate view post
+
+h4. Scaffold
+
+bc.. # Or scaffold all three of them
+$ spinebox scaffold post title author body
+
+h4. Compile project
 
 bc.. # Compile project for static serving
 $ spinebox compile

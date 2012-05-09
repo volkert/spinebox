@@ -41,7 +41,12 @@ module Spinebox
       puts ""
       
       puts "Generators:"
-      @@commands.each { |command| printf "%-3s %-50s %s\n", "", command.command, command.desc if command.options[:type] == :generator }
+      @@commands.each { |command| printf "%-3s %-40s %s\n", "", command.command, command.desc if command.options[:type] == :generator }
+      
+      puts ""
+      
+      puts "Scaffolds:"
+      @@commands.each { |command| printf "%-3s %-40s %s\n", "", command.command, command.desc if command.options[:type] == :scaffold }
     end
     
     # Encapsules a registered command

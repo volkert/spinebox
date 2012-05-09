@@ -66,4 +66,15 @@ Spinebox::Command.dispatch do
     exit(0)
   end
   
+  # View Generator
+  on "scaffold MODEL [attributes]", "Scaffold a model, view and a controller", :if => proc { ['scaffold', 's'].include?(ARGV.first)}, :type => :scaffold do
+    ARGV.shift
+    name        = ARGV.shift
+    model       = Spinebox::Generator::Model.new(name, ARGV)
+    view        = Spinebox::Generator::View.new(name)
+    controller  = Spinebox::Generator::Controller.new(name)
+    puts "Successfully scaffolded model, view and controller '#{model.name}'".green
+    exit(0)
+  end
+  
 end
