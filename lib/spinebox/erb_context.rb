@@ -39,12 +39,13 @@ module Spinebox
       "<link href='/assets/#{asset.logical_path}#{"?body=1" if options[:body]}' media='#{options[:media]}' rel='#{options[:rel]}' type='text/css'>"
     end
     
-    
   end
   
   # Include ERB context in the ERB evaluation of sprockets
-  Spinebox.views.context_class.class_eval do
-    include ERBContext
+  module ::Sprockets
+    class Context
+      include Spinebox::ERBContext
+    end
   end
   
 end
