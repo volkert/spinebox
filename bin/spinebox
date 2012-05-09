@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'spinebox'
+
+Spinebox::Cli.new.dispatch
