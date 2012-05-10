@@ -20,6 +20,7 @@ bc.. # Create new project an start developing
 $ spinebox new blog
 $ cd blog
 $ spinebox server
+$ open http://localhost:3000/index.html
 
 h4. Generate models, views and controllers
 

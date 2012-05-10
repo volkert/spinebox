@@ -14,4 +14,13 @@ Gem::Specification.new do |gem|
   gem.name          = "spinebox"
   gem.require_paths = ["lib"]
   gem.version       = Spinebox::VERSION
+  
+  # define dependencies see http://docs.rubygems.org/read/chapter/20#dependencies
+  gem.add_dependency('sprockets', '>= 2.1.2')
+  gem.add_dependency('rack', '>= 1.4.1')
+  gem.add_dependency('coffee-script', '>= 1.2.0')
+  gem.add_dependency('eco', '>= 1.0.0')
+  gem.add_dependency('sass', '>= 3.1.15')
+  gem.add_dependency('colorize', '>= 0.5.8')
+  gem.add_dependency('activesupport', '>= 3.2.2')
 end
